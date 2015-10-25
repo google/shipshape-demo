@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-function test() {
-    var text = 'Hello';
-    console.log(text);
+function test(text, other) {
+    console.log(text)
+    var isNull = (text == null);
 }
 
-test();
+test('hello');
 
