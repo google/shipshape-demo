@@ -21,32 +21,32 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 public class PutIfAbsentIdiom {
-	static Map<String, Date> chm = new ConcurrentHashMap<>();
-	
-	public static Date putDate(String key) {
-		Date date = chm.get(key);
-		if (date == null) {
-			date = new Date(System.currentTimeMillis());
-			chm.put(key, date);
-		}
-		return date;
-	}
-	
-	public static void main(String[] args) {
-		final String key = "myKey";
-		Thread t1 = new Thread() {
-			public void run() {
-				Date date = putDate(key);
-				System.out.println(date);
-			}
-		};
-		Thread t2 = new Thread() {
-			public void run() {
-				Date date = putDate(key);
-				System.out.println(date);
-			}
-		};
-		t1.start();
-		t2.start();
-	}
+  static Map<String, Date> chm = new ConcurrentHashMap<>();
+
+  public static Date putDate(String key) {
+    Date date = chm.get(key);
+    if (date == null) {
+      date = new Date(System.currentTimeMillis());
+      chm.put(key, date);
+    }
+    return date;
+  }
+
+  public static void main(String[] args) {
+    final String key = "myKey";
+    Thread t1 = new Thread() {
+      public void run() {
+        Date date = putDate(key);
+        System.out.println(date);
+      }
+    };
+    Thread t2 = new Thread() {
+      public void run() {
+        Date date = putDate(key);
+        System.out.println(date);
+      }
+    };
+    t1.start();
+    t2.start();
+  }
 }
