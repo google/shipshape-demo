@@ -1,0 +1,9 @@
+global:
+  images:
+    - emso/helloworld
+events:
+  - event: default
+    categories:
+      - go vet
+      - PyLint
+      - HelloWorld
